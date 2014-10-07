@@ -8,3 +8,26 @@ f('AdnBndAndBdaBn', 'dAn') // 4 ("Adn", "ndA", "dAn", "And")
 f('AbrAcadAbRa', 'cAda') // 2
 ```
 */
+var anagram = function (parent, child, i, j) {
+    if (!i && i !== 0) {
+        i = 0;
+    }
+    if (!j && j !== 0) {
+        j = child.length;
+    }
+    if (i > parent.length) {
+        return 0;
+    }
+    if (parent[i] === child[j]) {
+        if (j === 0) {
+            return 1 + anagram(parent, child, i + 1, child.length)
+        }
+        var rmvChar = child;
+        rmvChar.replace(j, '');
+        return anagram(parent, rmvChar, i + 1, child.length);
+    }
+    if (j === 0) {
+        return anagram(parent, child, i + 1, child.length);
+    }
+    return anagram(parent, child, i, j - 1)
+}
