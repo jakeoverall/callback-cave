@@ -9,9 +9,7 @@ f('AbrAcadAbRa', 'cAda') // 2
 ```
 */
 var anagram = function (parent, child, i, j) {
-    if (!i && i !== 0) {
-        i = 0;
-    }
+    i = i || 0;
     if (!j && j !== 0) {
         j = child.length;
     }
